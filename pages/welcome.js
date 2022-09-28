@@ -1,14 +1,20 @@
-import Image from "next/image";
 import React, { useState } from "react";
+import Image from "next/image";
+import { useRouter } from "next/router";
 import HeaderNav from "../components/HeaderNav";
 
 const Welcome = () => {
+  const router = useRouter();
   const [readyBox, setReadyBox] = useState("");
   const isDisabled = false;
   const isWaiting = true;
+
   if (readyBox == "ready") {
     isDisabled = true;
     isWaiting = false;
+    setTimeout(() => {
+      router.push("/quiz");
+    }, 4000);
   }
 
   return (
@@ -23,9 +29,9 @@ const Welcome = () => {
               Welcome to <span className="font-bold text-blue-400">PlayJWST</span>
             </h2>
             <p className="max-w-xl text-center text-gray-300 tracking-wide font-light text-sm">
-              NASA’s James Webb Space Telescope is the largest, most powerful, and most complex space science telescope ever built. This game will take you through a journey where you will understand why James Webb is the superior one. Type <span className="font-extrabold text-white">READY</span> when you want to get started.
+              NASA&apos;s James Webb Space Telescope is the largest, most powerful, and most complex space science telescope ever built. This game will take you through a journey where you will understand why James Webb is the superior one. Type <span className="font-extrabold text-white">READY</span> when you want to get started.
             </p>
-            <input type="text" id="helper-text" aria-describedby="helper-text-explanation" disabled={isDisabled} class="z-10 w-fit border text-sm rounded-lg p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-600 focus:ring-2 focus:border-blue-500 outline-none font-bold disabled:text-gray-400" placeholder="READY" onChange={(e) => setReadyBox(e.target.value.toLowerCase())} />
+            <input type="text" id="helper-text" autoComplete="off" aria-describedby="helper-text-explanation" disabled={isDisabled} class="z-10 w-fit border text-sm rounded-lg p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-600 focus:ring-2 focus:border-blue-500 outline-none font-bold disabled:text-gray-400" placeholder="READY" onChange={(e) => setReadyBox(e.target.value.toLowerCase())} />
             <div className="waitingForUser animate-pulse">
               <div id="toast-simple" class="flex items-center p-4 space-x-4 w-full max-w-xs text-gray-500 bg-white rounded-lg divide-x divide-gray-200 shadow dark:text-gray-400 dark:divide-gray-700 space-x dark:bg-gray-800" role="alert">
                 {isWaiting ? (
