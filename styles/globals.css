@@ -23,3 +23,8 @@ a {
   background-image: url("/images/bg_image.png");
   background-size: cover;
 }
+
+.bgimg-game {
+  background-image: url("/images/bg_image_game.png");
+  background-size: cover;
+}
