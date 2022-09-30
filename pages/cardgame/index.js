@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Link from "next/link";
 import cardQuestions from "../data/cardgame";
+import { UserContext } from "../../helpers/UserContext";
 import Image from "next/image";
 
 const Cardgame = () => {
+  const { userState, setUserState } = useContext(UserContext);
   const [quesNum, setQuesNum] = useState(0);
   const [point, setPoint] = useState(0);
   const [quesLen, setQuesLen] = useState(cardQuestions.length);
@@ -15,6 +17,7 @@ const Cardgame = () => {
   const handleClick = (isCorrect) => {
     if (isCorrect == true) {
       setPoint((point += 100));
+      setUserState({ ...userState, point: point });
       setIsCorrect(true);
       setCorrectFlag("Correct Answer ✓ ");
     } else {
@@ -46,8 +49,8 @@ const Cardgame = () => {
             </button>
             <div>
               <button disabled={true} type="button" className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none bg-blue-800">
-                Points
-                <span className="inline-flex justify-center items-center ml-2 w-4 h-4 text-xs font-extrabold text-blue-800 bg-blue-200 rounded-full p-6">{point}</span>
+                {userState.username}
+                <span className="inline-flex justify-center items-center ml-2 w-4 h-4 text-xs font-extrabold text-blue-800 bg-blue-200 rounded-full p-6">{userState.point}</span>
               </button>
             </div>
           </div>

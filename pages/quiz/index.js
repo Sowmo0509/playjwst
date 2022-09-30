@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import questions from "../data/quiz";
 import PlayButton from "../../components/PlayButton";
 import OptionDiv from "../../components/OptionDiv";
 import HeaderNav from "../../components/HeaderNav";
+import { UserContext } from "../../helpers/UserContext";
 import Link from "next/link";
 
 const Quiz = () => {
-  // const [isVisible, setIsVisible] = useState(false);
+  const { userState, setUserState } = useContext(UserContext);
   const [quesNum, setQuesNum] = useState(0);
   const [point, setPoint] = useState(0);
   const [isOptionDisabled, setIsOptionDisabled] = useState(false);
@@ -16,7 +17,7 @@ const Quiz = () => {
   const handleClick = (isCorrect) => {
     if (isCorrect == true) {
       setPoint((point += 50));
-      // setIsVisible(true);
+      setUserState({ ...userState, point: point });
       setCorrectFlag("Correct Answer ✓ ");
     } else {
       setCorrectFlag("Wrong Answer ✘ ");
@@ -46,8 +47,8 @@ const Quiz = () => {
             </button>
             <div>
               <button disabled={true} type="button" className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none bg-blue-800">
-                Points
-                <span className="inline-flex justify-center items-center ml-2 w-4 h-4 text-xs font-extrabold text-blue-800 bg-blue-200 rounded-full p-6">{point}</span>
+                {userState.username}
+                <span className="inline-flex justify-center items-center ml-2 w-4 h-4 text-xs font-extrabold text-blue-800 bg-blue-200 rounded-full p-6">{userState.point}</span>
               </button>
             </div>
           </div>
