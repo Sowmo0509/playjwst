@@ -1,9 +1,13 @@
+import React, { useState, useContext } from "react";
 import Link from "next/link";
-import React from "react";
 import HeaderNav from "../components/HeaderNav";
 import PlayButton from "../components/PlayButton";
+import { UserContext } from "../helpers/UserContext";
 
 const Register = () => {
+  const { userState, setUserState } = useContext(UserContext);
+  const [savedUsername, setSavedUsername] = useState("");
+
   return (
     <section className="bgimg min-h-screen w-full">
       <div className="main flex flex-col justify-between container mx-auto py-8 px-8 min-h-screen">
@@ -18,7 +22,7 @@ const Register = () => {
             <label for="helper-text" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
               Your username
             </label>
-            <input type="text" id="helper-text" aria-describedby="helper-text-explanation" className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-600 focus:ring-2 focus:border-blue-500 outline-none" placeholder="JohnDoe123" />
+            <input onChange={(e) => setSavedUsername(e.target.value)} type="text" id="helper-text" aria-describedby="helper-text-explanation" className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-600 focus:ring-2 focus:border-blue-500 outline-none" placeholder="JohnDoe123" />
             <p id="helper-text-explanation" className="mt-2 text-xs text-gray-500 dark:text-gray-400">
               This username will be shown in public leaderboard. Read our {""}
               <a href="#" className="font-medium text-xs text-blue-600 hover:underline dark:text-blue-500">
@@ -27,11 +31,13 @@ const Register = () => {
               .
             </p>
           </div>
-          <Link href={"/welcome"}>
-            <a className="w-fit h-fit">
-              <PlayButton isIcon={false} text={"Get Started"} textSize={"text-md"} />
-            </a>
-          </Link>
+          <button onClick={() => setUserState({ username: savedUsername, point: 0 })}>
+            <Link href={"/welcome"}>
+              <a className="w-fit h-fit">
+                <PlayButton isIcon={false} text={"Get Started"} textSize={"text-md"} />
+              </a>
+            </Link>
+          </button>
         </div>
         <div className="pb-20 md:pb-0 md:w-1/3">
           <div className="flex p-4 opacity-75 text-xs tracking-wide rounded-lg bg-gray-700 text-gray-300" role="alert">

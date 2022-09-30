@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import HeaderNav from "../components/HeaderNav";
+import { UserContext } from "../helpers/UserContext";
 
 const Welcome = () => {
+  const { userState } = useContext(UserContext);
   const router = useRouter();
   const [readyBox, setReadyBox] = useState("");
   const isDisabled = false;
@@ -17,6 +19,14 @@ const Welcome = () => {
     }, 4000);
   }
 
+  useEffect(() => {
+    if (userState.username == "") {
+      router.push("register");
+    } else if (userState.username.replace(/\s/g, "") == "") {
+      router.push("register");
+    }
+  }, []);
+
   return (
     <section className="bgimg-game min-h-screen w-full">
       <div className="main container mx-auto py-8 px-8 min-h-screen relative overflow-hidden">
@@ -26,7 +36,7 @@ const Welcome = () => {
         <div className="main text-white h-80 flex flex-col justify-center">
           <div className="toptitle text-center py-8 flex flex-col items-center gap-4">
             <h2 className="text-3xl font-extralight text-gray-300">
-              Welcome to <span className="font-bold text-blue-400">PlayJWST</span>
+              Hi <span className="font-bold text-white">{userState.username}</span>, Welcome to <span className="font-bold text-blue-400">PlayJWST</span>
             </h2>
             <p className="max-w-xl text-center text-gray-300 tracking-wide font-light text-sm">
               NASA&apos;s James Webb Space Telescope is the largest, most powerful, and most complex space science telescope ever built. This game will take you through a journey where you will understand why James Webb is the superior one. Type <span className="font-extrabold text-white">READY</span> when you want to get started.
