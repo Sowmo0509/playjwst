@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import questions from "../../data/quiz";
+import { useRouter } from "next/router";
 import PlayButton from "../../components/PlayButton";
 import OptionDiv from "../../components/OptionDiv";
 import HeaderNav from "../../components/HeaderNav";
@@ -8,6 +9,7 @@ import Link from "next/link";
 
 const Quiz = () => {
   const { userState, setUserState } = useContext(UserContext);
+  const router = useRouter();
   const [quesNum, setQuesNum] = useState(0);
   const [point, setPoint] = useState(0);
   const [isOptionDisabled, setIsOptionDisabled] = useState(false);
