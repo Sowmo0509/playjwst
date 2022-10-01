@@ -1,7 +1,7 @@
-import connectMongo from "../../../utils/connectMongo";
-import User from "../../../models/userModel";
+import connectMongo from "../../utils/connectMongo";
+import User from "../../models/userModel";
 
-export default async function addTest(req, res) {
+export default async function handler(req, res) {
   console.log("Connecting to DB...");
   await connectMongo();
   console.log("Connected!");
@@ -12,11 +12,11 @@ export default async function addTest(req, res) {
     await User.create(req.body);
   } catch (error) {
     if (error.code == "11000") {
-      res.send({ errorMsg: "Same username found. Please change username." });
+      res.status(200).send({ errorMsg: "Same username found. Please change username." });
     } else {
-      res.send({ successMsg: "User added." });
+      res.status(200).send({ successMsg: "User added." });
     }
   }
   console.log("Created!");
-  res.send("CREATED NEW PLAYER PROFILE");
+  res.status(200).send("CREATED NEW PLAYER PROFILE");
 }
