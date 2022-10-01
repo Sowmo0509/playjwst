@@ -9,7 +9,7 @@ export default async function addTest(req, res) {
   console.log("Creating document...");
   //   const user = await User.create({ username: "Cow", point: 123 });
   try {
-    await User.create({ username: "Cow", point: 123 });
+    await User.create(req.body);
   } catch (error) {
     if (error.code == "11000") {
       res.send({ errorMsg: "Same username found. Please change username." });
@@ -18,6 +18,5 @@ export default async function addTest(req, res) {
     }
   }
   console.log("Created!");
-
-  //   res.json({ user });
+  res.send("CREATED NEW PLAYER PROFILE");
 }

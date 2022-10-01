@@ -6,6 +6,7 @@ import { BsGlobe2 } from "react-icons/bs";
 import axios from "axios";
 
 const LeaderboardHome = ({ userdata }) => {
+  const isLive = true;
   const leaderboard = userdata.user;
   const sortedLeaderboard = leaderboard.sort((a, b) => b.point - a.point);
   const topFive = sortedLeaderboard.slice(0, 5);
@@ -18,7 +19,7 @@ const LeaderboardHome = ({ userdata }) => {
           <h3 className="text-white">
             <span className="font-bold text-xl">LEADER</span>
             <span className="font-light text-gray-300 text-xl">BOARD</span>
-            <p className="text-xs text-red-400">[Not Live Now]</p>
+            {isLive ? <p className="text-xs text-green-400">[Live]</p> : <p className="text-xs text-red-400">[Not Live]</p>}
           </h3>
           <BsGlobe2 color="white" size={24} />
         </div>
