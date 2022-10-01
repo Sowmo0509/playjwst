@@ -10,16 +10,17 @@ const HeaderNav = () => {
           <Image src={"/images/logo.png"} height={279} width={1024} alt="logo" />
         </Link>
       </div>
-      <a target={"_blank"} rel="noopener noreferrer" href="https://blogs.nasa.gov/webb/">
-        <div className="md:hidden hover:animate-pulse cursor-pointer">
+      <div className="md:hidden hover:animate-pulse cursor-pointer">
+        <a target={"_blank"} rel="noopener noreferrer" href="https://blogs.nasa.gov/webb/">
           <Image src={"/images/nasa-logo.png"} height={36} width={36} alt="nasa-logo" />
-        </div>
-      </a>
-      <a target={"_blank"} rel="noopener noreferrer" href="https://blogs.nasa.gov/webb/">
-        <div className="hidden md:block hover:animate-pulse cursor-pointer">
+        </a>
+      </div>
+
+      <div className="hidden md:block hover:animate-pulse cursor-pointer">
+        <a target={"_blank"} rel="noopener noreferrer" href="https://blogs.nasa.gov/webb/">
           <Image src={"/images/nasa-logo.png"} height={56} width={56} alt="nasa-logo" />
-        </div>
-      </a>
+        </a>
+      </div>
     </div>
   );
 };
