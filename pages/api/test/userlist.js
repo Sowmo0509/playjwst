@@ -1,7 +1,7 @@
 import connectMongo from "../../../utils/connectMongo";
 import User from "../../../models/userModel";
 
-export default function handler(req, res) {
+export async default function handler(req, res) {
   console.log("Connecting to DB...");
   await connectMongo();
   console.log("Connected!");
