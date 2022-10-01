@@ -1,7 +1,19 @@
 import Link from "next/link";
 import React from "react";
+import { useRouter } from "next/router";
 
 const Learn = () => {
+  
+    const router = useRouter();
+  
+    useEffect(() => {
+    if (userState.username == "") {
+      router.push("register");
+    } else if (userState.username.replace(/\s/g, "") == "") {
+      router.push("register");
+    }
+  }, [router, userState.username]);
+  
   return (
     <section className="bgimg-game min-h-screen w-full">
       <div className="main container mx-auto md:flex md:justify-center md:items-center py-8 px-8 min-h-screen text-white relative overflow-hidden">
