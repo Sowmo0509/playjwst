@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Link from "next/link";
 import cardQuestions from "../../data/cardgame";
 import { UserContext } from "../../helpers/UserContext";
