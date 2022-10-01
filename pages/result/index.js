@@ -29,16 +29,16 @@ const Result = () => {
           </div>
           <div className="socialShare flex gap-x-4">
             <FacebookShareButton url={constData.webUrl} quote={`Check this out! I just got ${userState.point} playing PlayJWST! Try it now!`} hashtag={"#playjwst"}>
-              <FacebookIcon size={"3vw"} round={true} />
+              <FacebookIcon size={"16px"} round={true} />
             </FacebookShareButton>
             <WhatsappShareButton url={constData.webUrl} quote={`Check this out! I just got ${userState.point} playing PlayJWST! Try it now!`} hashtag={"#playjwst"}>
-              <WhatsappIcon size={"3vw"} round={true} />
+              <WhatsappIcon size={"16px"} round={true} />
             </WhatsappShareButton>
             <TwitterShareButton url={constData.webUrl} quote={`Check this out! I just got ${userState.point} playing PlayJWST! Try it now!`} hashtag={"#playjwst"}>
-              <TwitterIcon size={"3vw"} round={true} />
+              <TwitterIcon size={"16px"} round={true} />
             </TwitterShareButton>
             <EmailShareButton url={constData.webUrl} quote={`Check this out! I just got ${userState.point} playing PlayJWST! Try it now!`} hashtag={"#playjwst"}>
-              <EmailIcon size={"3vw"} round={true} />
+              <EmailIcon size={"16px"} round={true} />
             </EmailShareButton>
           </div>
         </div>
