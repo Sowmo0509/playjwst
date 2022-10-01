@@ -45,7 +45,7 @@ export default function Home({ userdata }) {
 }
 
 // Getting leaderboard data
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch("http://localhost:3000/api/test/userlist");
   const data = await res.json();
   console.log(data);
