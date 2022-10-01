@@ -44,16 +44,16 @@ export default function Home({ userdata }) {
   );
 }
 
-// // Getting leaderboard data
-// export async function getServerSideProps() {
-//   const res = await fetch(`${process.env.URL}/api/test/userlist`);
-//   const data = await res.json();
-//   console.log(data);
+// Getting leaderboard data
+export async function getServerSideProps() {
+  const res = await fetch(`${process.env.URL}/api/test/userlist`);
+  const data = await res.json();
+  console.log(data);
 
-//   return {
-//     props: { userdata: data },
-//   };
-// }
+  return {
+    props: { userdata: data },
+  };
+}
 
 // // Getting leaderboard data
 // export async function getServerSideProps() {
@@ -67,15 +67,15 @@ export default function Home({ userdata }) {
 // }
 
 // Getting leaderboard data
-export async function getServerSideProps() {
-  // const res = await fetch(`${process.env.URL}/api/test/userlist`);
-  // const data = await res.json();
+// export async function getServerSideProps() {
+//   // const res = await fetch(`${process.env.URL}/api/test/userlist`);
+//   // const data = await res.json();
 
-  return {
-    props: {
-      userdata: {
-        user: [{ username: "bla", point: "bla" }],
-      },
-    },
-  };
-}
+//   return {
+//     props: {
+//       userdata: {
+//         user: [{ username: "bla", point: "bla" }],
+//       },
+//     },
+//   };
+// }
