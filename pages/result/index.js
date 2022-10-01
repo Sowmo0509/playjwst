@@ -10,9 +10,16 @@ const Result = () => {
   const data = { username: userState.username, point: userState.point };
 
   useEffect(() => {
-    axios.post(`/api/add`, data).then((response) => {
-      console.log(response);
-    });
+    axios
+      .post(`api/test/add`, data, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+      });
   }, [data]);
 
   return (
