@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 
 const Learn = () => {
