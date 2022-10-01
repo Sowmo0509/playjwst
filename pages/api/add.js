@@ -1,5 +1,5 @@
-import connectMongo from "../../../utils/connectMongo";
-import User from "../../../models/userModel";
+import connectMongo from "../../utils/connectMongo";
+import User from "../../models/userModel";
 
 export default async function addTest(req, res) {
   console.log("Connecting to DB...");

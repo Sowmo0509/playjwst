@@ -10,10 +10,10 @@ const Result = () => {
   const data = { username: userState.username, point: userState.point };
 
   useEffect(() => {
-    axios.post("https://playjwst.vercel.app/api/test/add", data).then((response) => {
+    axios.post(`${process.env.URL}/api/add`, data).then((response) => {
       console.log(response);
     });
-  }, []);
+  }, [data]);
 
   return (
     <section className="bgimg min-h-screen w-full">
