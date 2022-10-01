@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../helpers/UserContext";
 import constData from "../../data/const";
 import axios from "axios";
+import PlayButton from "../../components/PlayButton";
+import Link from "next/link";
 import { EmailShareButton, FacebookShareButton, HatenaShareButton, InstapaperShareButton, LineShareButton, LinkedinShareButton, LivejournalShareButton, MailruShareButton, OKShareButton, PinterestShareButton, PocketShareButton, RedditShareButton, TelegramShareButton, TumblrShareButton, TwitterShareButton, ViberShareButton, VKShareButton, WhatsappShareButton, WorkplaceShareButton } from "react-share";
 import { EmailIcon, FacebookIcon, FacebookMessengerIcon, HatenaIcon, InstapaperIcon, LineIcon, LinkedinIcon, LivejournalIcon, MailruIcon, OKIcon, PinterestIcon, PocketIcon, RedditIcon, TelegramIcon, TumblrIcon, TwitterIcon, ViberIcon, VKIcon, WeiboIcon, WhatsappIcon, WorkplaceIcon } from "react-share";
 
@@ -56,6 +58,11 @@ const Result = () => {
               <EmailIcon size={"3vw"} round={true} />
             </EmailShareButton>
           </div>
+          <Link href={"/"}>
+            <a>
+              <PlayButton text={"Go Home >"} />
+            </a>
+          </Link>
         </div>
       </div>
     </section>
