@@ -1,11 +1,13 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LeaderboardRow from "./child/LeaderboardRow";
 import { BsGlobe2 } from "react-icons/bs";
-import leaderboard from "../data/leaderboard";
+// import leaderboard from "../data/leaderboard";
+import axios from "axios";
 
-const LeaderboardHome = () => {
-  const sortedLeaderboard = leaderboard.sort((a, b) => b.points - a.points);
+const LeaderboardHome = ({ userdata }) => {
+  const leaderboard = userdata.user;
+  const sortedLeaderboard = leaderboard.sort((a, b) => b.point - a.point);
   const topFive = sortedLeaderboard.slice(0, 5);
   const colorList = ["bg-blue-500", "bg-blue-600", "bg-blue-700", "bg-blue-800", "bg-blue-900"];
 
@@ -20,9 +22,13 @@ const LeaderboardHome = () => {
           </h3>
           <BsGlobe2 color="white" size={24} />
         </div>
-        {topFive.map((leader, index) => {
-          return <LeaderboardRow key={index} points={leader.points} name={leader.username} color={colorList[index]} />;
-        })}
+        {userdata == null ? (
+          <p className="text-white">Loading userdata...</p>
+        ) : (
+          topFive.map((leader, index) => {
+            return <LeaderboardRow key={index} points={leader.point} name={leader.username} color={colorList[index]} />;
+          })
+        )}
       </div>
     </div>
   );

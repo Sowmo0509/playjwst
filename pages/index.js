@@ -4,7 +4,7 @@ import PlayButton from "../components/PlayButton";
 import HeaderNav from "../components/HeaderNav";
 import Link from "next/link";
 
-export default function Home() {
+export default function Home({ userdata }) {
   return (
     <section className="bgimg min-h-screen w-full">
       <div className="main container mx-auto py-8 px-8 min-h-screen">
@@ -23,7 +23,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="right-hero  pt-10 md:pt-0">
-              <LeaderboardHome />
+              <LeaderboardHome userdata={userdata} />
             </div>
           </div>
         </div>
@@ -42,4 +42,15 @@ export default function Home() {
       </div>
     </section>
   );
+}
+
+// Getting leaderboard data
+export async function getStaticProps() {
+  const res = await fetch("http://localhost:3000/api/test/userlist");
+  const data = await res.json();
+  console.log(data);
+
+  return {
+    props: { userdata: data },
+  };
 }
