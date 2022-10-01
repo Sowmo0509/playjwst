@@ -14,7 +14,7 @@ const Register = () => {
   const router = useRouter();
 
   const setUser = async () => {
-    const user = await axios.post("https://playjwst.vercel.app/api/test/checkuser", data);
+    const user = await axios.post(`${process.env.URL}/api/checkuser`, data);
     if (user.data.user == null) {
       setUserState({ username: savedUsername.toLowerCase().replace(/\s/g, ""), point: 0 });
       router.push("welcome");

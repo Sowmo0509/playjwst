@@ -43,6 +43,29 @@ export default function Home({ userdata }) {
     </section>
   );
 }
+
+// // Getting leaderboard data
+// export async function getServerSideProps() {
+//   const res = await fetch(`${process.env.URL}/api/test/userlist`);
+//   const data = await res.json();
+//   console.log(data);
+
+//   return {
+//     props: { userdata: data },
+//   };
+// }
+
+// // Getting leaderboard data
+// export async function getServerSideProps() {
+//   const res = await fetch(`${process.env.URL}/api/test/userlist`);
+//   const data = await res.json();
+//   console.log(data);
+
+//   return {
+//     props: { userdata: data },
+//   };
+// }
+
 // Getting leaderboard data
 export async function getServerSideProps() {
   // const res = await fetch(`${process.env.URL}/api/test/userlist`);

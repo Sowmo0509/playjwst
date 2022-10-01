@@ -18,9 +18,9 @@ const Leaderboard = ({ userdata }) => {
 
 export default Leaderboard;
 
-// Getting leaderboard datas
+// Getting leaderboard data
 export async function getServerSideProps() {
-  const res = await fetch(`${process.env.URL}/api/test/userlist`);
+  const res = await fetch(`${process.env.URL}/api/userlist`);
   const data = await res.json();
 
   return {
