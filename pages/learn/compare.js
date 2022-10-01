@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import PlayButton from "../../components/PlayButton";
 import ReactCompareImage from "react-compare-image-r18";
 import leaderboard from "../../data/leaderboard";
@@ -7,6 +8,7 @@ import { UserContext } from "../../helpers/UserContext";
 import axios from "axios";
 
 const Compare = () => {
+    const router = useRouter();
   const { userState, setUserState } = useContext(UserContext);
   const userData = { username: userState.username, point: userState.point };
 
@@ -19,6 +21,14 @@ const Compare = () => {
   // const addToResultData = () => {
   //   leaderboard.push(userData);
   // };
+  
+    useEffect(() => {
+    if (userState.username == "") {
+      router.push("register");
+    } else if (userState.username.replace(/\s/g, "") == "") {
+      router.push("register");
+    }
+  }, [router, userState.username]);
 
   return (
     <section className="bgimg-game min-h-screen w-full">
