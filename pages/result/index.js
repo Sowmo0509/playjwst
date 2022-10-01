@@ -10,7 +10,7 @@ const Result = () => {
   const data = { username: userState.username, point: userState.point };
 
   useEffect(() => {
-    axios.post("http://localhost:3000/api/test/add", data).then((response) => {
+    axios.post("https://playjwst.vercel.app/api/test/add", data).then((response) => {
       console.log(response);
     });
   }, []);
