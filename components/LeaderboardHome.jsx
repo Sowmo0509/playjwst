@@ -26,7 +26,7 @@ const LeaderboardHome = ({ userdata }) => {
             </Link>
             <div className="live flex items-center gap-x-1">
               {isLive ? <p className="text-xs text-green-400">[Live]</p> : <p className="text-xs text-red-400">[Not Live]</p>}
-              {isLive ? <div className="w-2 h-2 bg-green-400 rounded-full"></div> : <div className="w-2 h-2 bg-red-400 rounded-full"></div>}
+              {isLive ? <div className="animate-pulse w-2 h-2 bg-green-400 rounded-full"></div> : <div className="animate-pulse w-2 h-2 bg-red-400 rounded-full"></div>}
             </div>
           </h3>
           <BsGlobe2 color="white" size={24} />
