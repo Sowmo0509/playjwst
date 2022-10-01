@@ -3,8 +3,10 @@ import Link from "next/link";
 import cardQuestions from "../../data/cardgame";
 import { UserContext } from "../../helpers/UserContext";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Cardgame = () => {
+    const router = useRouter();
   const { userState, setUserState } = useContext(UserContext);
   const [quesNum, setQuesNum] = useState(0);
   const [point, setPoint] = useState(0);
@@ -33,6 +35,14 @@ const Cardgame = () => {
       setQuesLen((quesLen = quesLen - 1));
     }
   };
+  
+    useEffect(() => {
+    if (userState.username == "") {
+      router.push("register");
+    } else if (userState.username.replace(/\s/g, "") == "") {
+      router.push("register");
+    }
+  }, [router, userState.username]);
 
   return (
     <section className="bgimg-game min-h-screen w-full">
