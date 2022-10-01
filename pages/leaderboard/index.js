@@ -20,14 +20,10 @@ export default Leaderboard;
 
 // Getting leaderboard data
 export async function getServerSideProps() {
-  // const res = await fetch(`${process.env.URL}/api/test/userlist`);
-  // const data = await res.json();
+  const res = await fetch(`${process.env.URL}/api/test/userlist`);
+  const data = await res.json();
 
   return {
-    props: {
-      userdata: {
-        user: [{ username: "bla", point: "bla" }],
-      },
-    },
+    props: { userdata: data },
   };
 }
