@@ -12,11 +12,11 @@ export default async function handler(req, res) {
     await User.create(req.body);
   } catch (error) {
     if (error.code == "11000") {
-      res.status(200).send({ errorMsg: "Same username found. Please change username." });
+      res.status(200).json({ errorMsg: "Same username found. Please change username." });
     } else {
-      res.status(200).send({ successMsg: "User added." });
+      res.status(200).json({ successMsg: "User added." });
     }
   }
   console.log("Created!");
-  res.status(200).send("CREATED NEW PLAYER PROFILE");
+  res.status(200).json("CREATED NEW PLAYER PROFILE");
 }
