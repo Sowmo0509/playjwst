@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 const Learn = () => {
   
     const router = useRouter();
+    const { userState } = useContext(UserContext);
   
     useEffect(() => {
     if (userState.username == "") {
