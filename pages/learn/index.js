@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
-import { UserContext } from "../helpers/UserContext";
+import { UserContext } from "../../helpers/UserContext";
 
 const Learn = () => {
   
