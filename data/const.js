@@ -1,5 +1,5 @@
 const data = {
-  webUrl: "www.facebook.com",
+  webUrl: "https://playjwst.vercel.app/",
 };
 
 export default data;
