@@ -1,11 +1,19 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../helpers/UserContext";
 import constData from "../../data/const";
+import axios from "axios";
 import { EmailShareButton, FacebookShareButton, HatenaShareButton, InstapaperShareButton, LineShareButton, LinkedinShareButton, LivejournalShareButton, MailruShareButton, OKShareButton, PinterestShareButton, PocketShareButton, RedditShareButton, TelegramShareButton, TumblrShareButton, TwitterShareButton, ViberShareButton, VKShareButton, WhatsappShareButton, WorkplaceShareButton } from "react-share";
 import { EmailIcon, FacebookIcon, FacebookMessengerIcon, HatenaIcon, InstapaperIcon, LineIcon, LinkedinIcon, LivejournalIcon, MailruIcon, OKIcon, PinterestIcon, PocketIcon, RedditIcon, TelegramIcon, TumblrIcon, TwitterIcon, ViberIcon, VKIcon, WeiboIcon, WhatsappIcon, WorkplaceIcon } from "react-share";
 
 const Result = () => {
   const { userState, setUserState } = useContext(UserContext);
+  const data = { username: userState.username, point: userState.point };
+
+  useEffect(() => {
+    axios.post("http://localhost:3000/api/test/add", data).then((response) => {
+      console.log(response);
+    });
+  }, []);
 
   return (
     <section className="bgimg min-h-screen w-full">
@@ -29,16 +37,16 @@ const Result = () => {
           </div>
           <div className="socialShare flex gap-x-4">
             <FacebookShareButton url={constData.webUrl} quote={`Check this out! I just got ${userState.point} playing PlayJWST! Try it now!`} hashtag={"#playjwst"}>
-              <FacebookIcon round={true} />
+              <FacebookIcon size={"3vw"} round={true} />
             </FacebookShareButton>
             <WhatsappShareButton url={constData.webUrl} quote={`Check this out! I just got ${userState.point} playing PlayJWST! Try it now!`} hashtag={"#playjwst"}>
-              <WhatsappIcon round={true} />
+              <WhatsappIcon size={"3vw"} round={true} />
             </WhatsappShareButton>
             <TwitterShareButton url={constData.webUrl} quote={`Check this out! I just got ${userState.point} playing PlayJWST! Try it now!`} hashtag={"#playjwst"}>
-              <TwitterIcon round={true} />
+              <TwitterIcon size={"3vw"} round={true} />
             </TwitterShareButton>
             <EmailShareButton url={constData.webUrl} quote={`Check this out! I just got ${userState.point} playing PlayJWST! Try it now!`} hashtag={"#playjwst"}>
-              <EmailIcon round={true} />
+              <EmailIcon size={"3vw"} round={true} />
             </EmailShareButton>
           </div>
         </div>

@@ -1,12 +1,27 @@
 import React, { useState, useContext } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import HeaderNav from "../components/HeaderNav";
 import PlayButton from "../components/PlayButton";
 import { UserContext } from "../helpers/UserContext";
+import axios from "axios";
 
 const Register = () => {
   const { userState, setUserState } = useContext(UserContext);
   const [savedUsername, setSavedUsername] = useState("");
+  const [isExist, setIsExist] = useState(false);
+  const data = { username: savedUsername };
+  const router = useRouter();
+
+  const setUser = async () => {
+    const user = await axios.post("http://localhost:3000/api/test/checkuser", data);
+    if (user.data.user == null) {
+      setUserState({ username: savedUsername.toLowerCase().replace(/\s/g, ""), point: 0 });
+      router.push("welcome");
+    } else {
+      console.log("Username exists");
+    }
+  };
 
   return (
     <section className="bgimg min-h-screen w-full">
@@ -31,7 +46,14 @@ const Register = () => {
               .
             </p>
           </div>
-          <button onClick={() => setUserState({ username: savedUsername, point: 0 })}>
+          {isExist ? (
+            <div className="usernameExists">
+              <span id="badge-dismiss-red" class="inline-flex items-center py-2 px-2 mr-2 text-sm font-medium text-red-800 bg-red-100 rounded dark:bg-red-200 dark:text-red-800">
+                Username already exists.
+              </span>
+            </div>
+          ) : null}
+          <button onClick={() => setUser()}>
             <Link href={"/welcome"}>
               <a className="w-fit h-fit">
                 <PlayButton isIcon={false} text={"Get Started"} textSize={"text-md"} />
