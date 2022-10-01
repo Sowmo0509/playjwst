@@ -25,7 +25,7 @@ const Welcome = () => {
     } else if (userState.username.replace(/\s/g, "") == "") {
       router.push("register");
     }
-  }, []);
+  }, [router, userState.username]);
 
   return (
     <section className="bgimg-game min-h-screen w-full">
