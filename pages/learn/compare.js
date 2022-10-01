@@ -1,9 +1,25 @@
+import React, { useState, useContext, useEffect } from "react";
 import Link from "next/link";
-import React from "react";
 import PlayButton from "../../components/PlayButton";
 import ReactCompareImage from "react-compare-image-r18";
+import leaderboard from "../../data/leaderboard";
+import { UserContext } from "../../helpers/UserContext";
+import axios from "axios";
 
 const Compare = () => {
+  const { userState, setUserState } = useContext(UserContext);
+  const userData = { username: userState.username, point: userState.point };
+
+  // useEffect(() => {
+  //   axios.post("http://localhost:3000/api/writefile", userData).then(() => {
+  //     console.log("OK DONE");
+  //   });
+  // }, []);
+
+  // const addToResultData = () => {
+  //   leaderboard.push(userData);
+  // };
+
   return (
     <section className="bgimg-game min-h-screen w-full">
       <div className="main container mx-auto md:flex md:justify-center md:items-center py-8 px-8 min-h-screen text-white relative overflow-hidden">
@@ -24,7 +40,11 @@ const Compare = () => {
               </svg>
             </a>
           </Link>
-          <PlayButton text={"See Result →"} />
+          <Link href={"/result"}>
+            <a>
+              <PlayButton text={"See Result →"} />
+            </a>
+          </Link>
         </div>
       </div>
     </section>
