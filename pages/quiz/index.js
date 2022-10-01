@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import questions from "../../data/quiz";
 import { useRouter } from "next/router";
 import PlayButton from "../../components/PlayButton";
