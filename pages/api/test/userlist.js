@@ -6,9 +6,9 @@ export default async function handler(req, res) {
   await connectMongo();
   console.log("Connected!");
 
-  const user = await User.find();
+  // const user = await User.find();
   // console.log(user);
 
-  res.status(200).json({ user });
+  // res.status(200).json({ user });
   res.send("Done fetching user from api");
 }
