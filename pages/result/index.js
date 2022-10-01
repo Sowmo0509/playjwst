@@ -13,7 +13,7 @@ const Result = () => {
     axios.post("https://playjwst.vercel.app/api/test/add", data).then((response) => {
       console.log(response);
     });
-  }, []);
+  }, [data]);
 
   return (
     <section className="bgimg min-h-screen w-full">
