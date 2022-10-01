@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import questions from "../data/quiz";
+import questions from "../../data/quiz";
 import PlayButton from "../../components/PlayButton";
 import OptionDiv from "../../components/OptionDiv";
 import HeaderNav from "../../components/HeaderNav";

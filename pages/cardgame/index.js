@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import Link from "next/link";
-import cardQuestions from "../data/cardgame";
+import cardQuestions from "../../data/cardgame";
 import { UserContext } from "../../helpers/UserContext";
 import Image from "next/image";
 
@@ -13,11 +13,12 @@ const Cardgame = () => {
   const [correctFlag, setCorrectFlag] = useState("");
   const [isCorrect, setIsCorrect] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
+  const previousPoint = userState.point;
 
   const handleClick = (isCorrect) => {
     if (isCorrect == true) {
-      setPoint((point += 100));
-      setUserState({ ...userState, point: point });
+      // setPoint((point += 100));
+      setUserState({ ...userState, point: previousPoint + 100 });
       setIsCorrect(true);
       setCorrectFlag("Correct Answer ✓ ");
     } else {
