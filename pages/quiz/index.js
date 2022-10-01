@@ -31,6 +31,14 @@ const Quiz = () => {
       setQuesLen((quesLen = quesLen - 1));
     }
   };
+  
+    useEffect(() => {
+    if (userState.username == "") {
+      router.push("register");
+    } else if (userState.username.replace(/\s/g, "") == "") {
+      router.push("register");
+    }
+  }, [router, userState.username]);
 
   return (
     <section className="bgimg-game min-h-screen w-full">
