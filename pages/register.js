@@ -13,8 +13,13 @@ const Register = () => {
   const data = { username: savedUsername };
   const router = useRouter();
 
-  const setUser = async () => {
-    const user = await axios.post(`${process.env.URL}/api/checkuser`, data);
+    const setUser = async () => {
+    const user = await axios.post(`${process.env.URL}/api/test/checkuser`, data, {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     if (user.data.user == null) {
       setUserState({ username: savedUsername.toLowerCase().replace(/\s/g, ""), point: 0 });
       router.push("welcome");
