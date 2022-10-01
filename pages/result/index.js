@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../../helpers/UserContext";
-import constData from "../data/const";
+import constData from "../../data/const";
 import { EmailShareButton, FacebookShareButton, HatenaShareButton, InstapaperShareButton, LineShareButton, LinkedinShareButton, LivejournalShareButton, MailruShareButton, OKShareButton, PinterestShareButton, PocketShareButton, RedditShareButton, TelegramShareButton, TumblrShareButton, TwitterShareButton, ViberShareButton, VKShareButton, WhatsappShareButton, WorkplaceShareButton } from "react-share";
 import { EmailIcon, FacebookIcon, FacebookMessengerIcon, HatenaIcon, InstapaperIcon, LineIcon, LinkedinIcon, LivejournalIcon, MailruIcon, OKIcon, PinterestIcon, PocketIcon, RedditIcon, TelegramIcon, TumblrIcon, TwitterIcon, ViberIcon, VKIcon, WeiboIcon, WhatsappIcon, WorkplaceIcon } from "react-share";
 
